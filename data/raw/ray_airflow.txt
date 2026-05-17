@@ -1,0 +1,13 @@
+Ray is a distributed-execution framework that lets Python code scale from a
+laptop to a cluster with minimal changes. A function decorated with @ray.remote
+becomes a task that can be dispatched to any worker in the cluster, and ray
+actors give you long-lived stateful workers.
+
+Airflow is a workflow orchestrator. Pipelines are expressed as DAGs of tasks
+in Python. Airflow schedules tasks, manages dependencies, retries on failure,
+and provides a UI for inspecting historical runs.
+
+In a typical embedding pipeline, Airflow orchestrates the high-level stages
+(discover, parse, embed, index) while Ray handles the data-parallel inner
+loop of embedding thousands of chunks across many CPU or GPU workers. The
+two are complementary: Airflow for control flow, Ray for compute.

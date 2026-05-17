@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head><title>Incremental Embedding Updates</title></head>
+<body>
+<h1>Incremental Embedding Updates</h1>
+<p>
+Re-embedding an entire corpus on every ingestion run is wasteful when only a
+handful of files changed. A practical incremental strategy:
+</p>
+<ol>
+  <li>Hash each source file with SHA-256.</li>
+  <li>Store <code>(path, hash, mtime)</code> in a tiny SQLite table.</li>
+  <li>On the next run, only re-parse files whose hash changed.</li>
+  <li>Within a changed file, hash each chunk; unchanged chunks reuse cached embeddings.</li>
+  <li>Deleted files are tombstoned: their chunks are removed from the vector store by doc_id.</li>
+</ol>
+<p>
+This keeps the embedding compute proportional to the <em>change</em> in the
+corpus, not its total size — critical when documents update frequently or the
+corpus grows into the millions.
+</p>
+</body>
+</html>

@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.pytest_cache/
+.ruff_cache/
+
+# data + indices (regeneratable)
+data/staging/
+data/state.db
+indices/faiss/*.index
+indices/bm25/*.pkl
+
+# airflow
+airflow/logs/
+airflow/airflow.db
+airflow/airflow.cfg
+airflow/webserver_config.py
+
+# os
+.DS_Store
