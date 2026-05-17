@@ -3,7 +3,7 @@ from rag_pipeline.schema import Document
 
 
 def test_chunker_produces_overlapping_chunks():
-    text = ("This is a sentence. " * 200).strip()
+    text = " ".join(f"This is sentence {i}." for i in range(200))
     doc = Document(doc_id="abc", source_path="t.txt", source_type="txt", text=text)
     chunks = chunk_document(doc, chunk_size=200, chunk_overlap=40)
     assert len(chunks) >= 2
