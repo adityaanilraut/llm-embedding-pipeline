@@ -86,7 +86,6 @@ class FaissStore:
         # delete any prior entries for these chunk_ids so upsert is idempotent
         existing = [self._id_to_idx[c] for c in chunk_ids if c in self._id_to_idx]
         if existing:
-
             self._index.remove_ids(np.array(existing, dtype=np.int64))
             for c in chunk_ids:
                 if c in self._id_to_idx:

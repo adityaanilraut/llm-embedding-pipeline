@@ -243,7 +243,8 @@ def stage_index(payload: dict, settings: Settings | None = None, backends=("fais
             table.column("index").to_pylist(),
             table.column("source_path").to_pylist(),
             table.column("source_type").to_pylist(),
-            table.column("text").to_pylist(), strict=False,
+            table.column("text").to_pylist(),
+            strict=False,
         )
     ]
     latest: dict[str, int] = {}
@@ -271,7 +272,8 @@ def stage_index(payload: dict, settings: Settings | None = None, backends=("fais
             chunks_table.column("text").to_pylist(),
             chunks_table.column("source_path").to_pylist(),
             chunks_table.column("source_type").to_pylist(),
-            chunks_table.column("doc_id").to_pylist(), strict=False,
+            chunks_table.column("doc_id").to_pylist(),
+            strict=False,
         ):
             latest_text[cid] = t
             latest_pl[cid] = {
